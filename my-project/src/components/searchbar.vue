@@ -3,8 +3,7 @@
    <div class="mt-8 justify-center items-center flex">
     <input
       type="search"
-      :value="todo"
-      @input="updateTodo"
+      v-model="todo"
       placeholder="Enter Text"
       class="border-[2px black] focus:outline-none border-2 border-slate-950 p-2 w-[400px] text-[18px] rounded-md"
     />
@@ -18,26 +17,13 @@
 </template>
 
 <script setup>
-// import { ref } from "vue";
-// const props = defineProps(["enter-text"]);
-// // const inputValue = defineProps('inputValue');
-// const activeTask = ref([]);
-// const todo = ref("");
-
-// const submit = () => {
-//   console.log(todo.value);
-// };
-
-
-import { defineProps, defineEmits, ref } from 'vue';
+import { ref } from "vue";
+const todo = ref("");
 const emit = defineEmits();
-const todo = ref([]);
-
-const updateTodo = (event) => {
-  todo.value = event.target.value;
-};
 const submit = () => {
-  emit('submit', todo.value);
-  todo.value = '';
+  if (todo.value.trim() !== "") {
+    emit('submit', todo.value);
+    todo.value = '';
+  }
 };
 </script>

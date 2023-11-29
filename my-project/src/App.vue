@@ -41,12 +41,15 @@ const inputValue = (e) => {
 console.log(e.target.value)
 }
 
-const submittedTodo = ref('');
+const submittedTodo = ref([]);
 
 const handleSubmittedTodo = (todo) => {
-  submittedTodo.value = todo;
+  submittedTodo.value.push(todo)
 };
 
+const handleDeleteTodo = (index) => {
+  submittedTodo.value.splice(index, 1);
+};
 </script>
 
 <template>
@@ -54,13 +57,10 @@ const handleSubmittedTodo = (todo) => {
     <navbar/>
     <div>
       <searchBar @submit="handleSubmittedTodo"/>
-      <!-- <div class="ml-2 hover:sepia grid"> -->
-        <!-- <searchButton :OnClickCounter="CounterBtn"/> -->
-      <!-- </div> -->
     </div>
     <div class="flex mt-8">
       <div class="w-[33.33%]">
-        <ActiveTickets :submittedTodo="submittedTodo"/>
+        <ActiveTickets :submittedTodo="submittedTodo" @deleteTodo="handleDeleteTodo"/>
       </div>
       <div class="w-[33.33%]">
         <inProgressTickets />
