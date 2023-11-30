@@ -31,7 +31,3 @@ const deleteTodo = (index) => {
   emit('deleteTodo', index);
   };
 </script>
-
-
-
-<!-- <div v-for='todo in submittedTodo' :key='todo' class="bg-[#ff5500] text-[20px] font-medium p-3 px-6 m-6 rounded-full flex items-center justify-between"> -->

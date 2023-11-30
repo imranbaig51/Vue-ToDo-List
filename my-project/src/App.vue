@@ -2,7 +2,7 @@
 import navbar from "./components/navbar.vue";
 import searchBar from "./components/searchbar.vue";
 import searchButton from "./components/searchbtn.vue";
-import ActiveTickets from "./components/AtciveTickets.vue";
+import ActiveTickets from "./components/ActiveTickets.vue";
 import inProgressTickets from "./components/InProgressTickets.vue";
 import CompletedTickets from "./components/CompletedTickets.vue";
 import { ref, onMounted, computed, watch} from "vue";
