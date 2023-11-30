@@ -27,3 +27,15 @@ const submit = () => {
   }
 };
 </script>
+
+
+
+
+<!-- {
+// const submit = () => {
+//   if (todo.value.trim() !== "") {
+//     emit('submit', todo.value);
+//     todo.value = '';
+//   }
+// };
+} -->

@@ -7,6 +7,4 @@
 <script setup>
 const props = defineProps(['OnClickCounter'])
 
-// console.log(props.count)
-
 </script>
