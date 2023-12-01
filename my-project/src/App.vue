@@ -50,8 +50,7 @@ const handleDeleteTodo = (index) => {
 };
 
 const handleSaveTodo = (index, editTodoText) => {
-  currentEditItem.value = - 1;
-    editTodo = submittedTodo.value
+  currentEditItem.value = -1;
   submittedTodo.value = submittedTodo.value.map((item, i) =>
     index === i ? editTodoText : item
   );

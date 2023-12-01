@@ -86,7 +86,6 @@ const editTodo = (index) => {
 };
 const saveTodo = (index ) => {
   emit("saveTodo", index , editTodoText.value);
-  
 };
 
 const deleteTodo = (index) => {
