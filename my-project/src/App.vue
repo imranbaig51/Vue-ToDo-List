@@ -50,13 +50,19 @@ const handleDeleteTodo = (index) => {
 };
 
 const handleSaveTodo = (index, editTodoText) => {
+  if (editTodoText.trim() === '') {
+    alert('Please Write Something Before Saving');
+    return;
+  }
   currentEditItem.value = -1;
   submittedTodo.value = submittedTodo.value.map((item, i) =>
     index === i ? editTodoText : item
   );
 };
+
 const editTodo = (index) => {
   currentEditItem.value = index;
+
 };
 
 // const editTodoText = ref('');

@@ -75,14 +75,9 @@ const props = defineProps(["submittedTodo" , "currentEditItem"]);
 const emit = defineEmits();
 const editTodoText = ref('')
 
-
 const editTodo = (index) => {
-    emit("editTodo", index);
-  // const updatedTodo = prompt('Edit todo:', submittedTodo[index]);
-  // if (updatedTodo !== null) {
-  //   emit("editTodo", { index, updatedTodo });
-  // }
-  // console.log(editTodo(index));
+  editTodoText.value = props.submittedTodo[index];
+  emit("editTodo", index);
 };
 const saveTodo = (index ) => {
   emit("saveTodo", index , editTodoText.value);
@@ -100,7 +95,6 @@ const deleteTodo = (index) => {
 
 
 const sendToNextComponent = (todo) => {
-  // Assuming you want to send all submittedTodo data to the next component
-  emit("sendToNextComponent", todo);
+ emit("sendToNextComponent", todo);
 };
 </script>
