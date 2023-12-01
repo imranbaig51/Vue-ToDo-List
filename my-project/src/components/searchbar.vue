@@ -26,6 +26,13 @@ const submit = () => {
     todo.value = '';
   }
 };
+
+window.addEventListener('keydown', function(e){
+  if(e.key == "Enter"){
+    submit()
+  }
+})
+
 </script>
 
 

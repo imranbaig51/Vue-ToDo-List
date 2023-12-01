@@ -10,7 +10,8 @@
     >
     {{todo}}
       <div class="icons flex">
-        <div class="prev-icon mx-4 hover:fill-[#ff0000] cursor-pointer">
+        <div class="prev-icon mx-4 hover:fill-[#ff0000] cursor-pointer"
+        @click="sendToPreviosComponent(todo),deleteTodo(index)">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -23,7 +24,9 @@
             />
           </svg>
         </div>
-        <div class="next-icon mx-4 hover:fill-[#6aff00] cursor-pointer">
+        <div class="next-icon mx-4 hover:fill-[#6aff00] cursor-pointer"
+        @click="sendToNextComponent(todo), deleteTodo(index)"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -43,5 +46,19 @@
 
 <script setup>
 import { ref } from "vue";
-const props = defineProps(["inProgress"]);
+const emit = defineEmits();
+const props = defineProps(["inProgress", "handleDeleteTodo"]);
+
+const deleteTodo = (index) => {
+  emit("deleteTodo", index);
+};
+
+const sendToNextComponent = (todo) => {
+  // Assuming you want to send all submittedTodo data to the next component
+  emit("sendToNextComponent", todo);
+};
+const sendToPreviosComponent = (todo) => {
+  // Assuming you want to send all submittedTodo data to the next component
+  emit("sendToPreviosComponent", todo);
+};
 </script>

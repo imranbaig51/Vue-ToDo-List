@@ -9,7 +9,7 @@
       class="bg-[#ff5500] text-[20px] font-medium p-3 px-6 m-6 rounded-full flex items-center justify-between"
     >
       <span v-if="currentEditItem !== index">{{ todo }}</span>
-      <input v-else  v-model="editTodoText" class="w-[60%]" type="text">
+      <input v-else  v-model="editTodoText" class="w-[60%] rounded-full px-2" type="text">
       <div class="icons flex">
         <div v-if="currentEditItem !== index"
           class="edit-icon mx-4 hover:fill-white cursor-pointer"
@@ -50,7 +50,7 @@
           </svg>
         </div>
         <div class="next-icon mx-4 hover:fill-[#6aff00] cursor-pointer" 
-        @click="sendToNextComponent(todo)">
+        @click="sendToNextComponent(todo), deleteTodo(index)">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
