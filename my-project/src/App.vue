@@ -1,43 +1,11 @@
 <script setup>
 import navbar from "./components/navbar.vue";
 import searchBar from "./components/searchbar.vue";
-// import searchButton from "./components/searchbtn.vue";
 import ActiveTickets from "./components/ActiveTickets.vue";
 import inProgressTickets from "./components/InProgressTickets.vue";
 import CompletedTickets from "./components/CompletedTickets.vue";
+import Pinia from "./components/PiniaTestingComponent.vue"
 import { ref, onMounted, computed, watch } from "vue";
-// const todos = ref([])
-// const input_content = ref('')
-// const addtodo = () => {
-//   if (input_content.value.trim()==='')
-//   return
-// console.log( );
-// }
-
-// const activeTask = ref([]);
-
-// const name = ref("");
-// const submit = () => {
-//   const newListIterm = {
-//     newTitle: name.value,
-//   };
-//   activeTask.value.push(newListIterm);
-
-//   console.log(activeTask.value);
-// };
-// const count = ref(0);
-// const handleChange = () => {
-//   count.value++;
-
-// };
-// const ActiveTicket = count;
-// const CounterBtn = handleChange
-
-// const parentValue = ref('');
-// console.log(parentValue)
-// const inputValue = (e) => {
-//   console.log(e.target.value);
-// };
 
 const submittedTodo = ref([]);
 const currentEditItem = ref(-1);
@@ -64,23 +32,6 @@ const editTodo = (index) => {
   currentEditItem.value = index;
 
 };
-
-// const editTodoText = ref('');
-// const originalTodoText = ref('');
-
-// const editTodo = (index) => {
-//   currentEditItem.value = index;
-//   originalTodoText.value = submittedTodo.value[index];
-//   editTodoText.value = submittedTodo.value[index];
-// };
-
-// const saveTodo = (index) => {
-//   currentEditItem.value = -1;
-//   submittedTodo.value = submittedTodo.value.map((item, i) =>
-//     index === i ? editTodoText.value : item
-//   );
-// };
-
 const inProgress = ref([]);
 
 const handleInProrss  = (todo) => {
@@ -130,6 +81,9 @@ const inProgressDeleteTodo = (index) => {
         :CompletedTask="Completed"
         />
       </div>
+    </div>
+    <div class="text-center">
+    <Pinia/>
     </div>
   </div>
 </template>
