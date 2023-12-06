@@ -8,12 +8,12 @@
       :key="index"
       class="bg-[#ff5500] text-[20px] font-medium p-3 px-6 m-6 rounded-full flex items-center justify-between"
     >
-      <span v-if="currentEditItem !== index">{{ todo }}</span>
+      <span v-if="currentEditItem !== todo.id">{{ todo.todo }}</span>
       <input v-else  v-model="editTodoText" class="w-[60%] rounded-full px-2" type="text">
       <div class="icons flex">
-        <div v-if="currentEditItem !== index"
+        <div v-if="currentEditItem !== todo.id"
           class="edit-icon mx-4 hover:fill-white cursor-pointer"
-          @click="editTodo(index)"
+          @click="editTodo(todo)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,13 +29,16 @@
         </div>
          <div v-else
           class="save-icon mx-4 hover:fill-white cursor-pointer"
-          @click="saveTodo(index)"
+          @click="saveTodo(todo.id)"
         >
          Save
         </div>
-        <div
+
+         
+
+        <div v-if="currentEditItem !== todo.id"
           class="delet-icon mx-3 hover:fill-[#ff0000] cursor-pointer"
-          @click="deleteTodo(index)"
+          @click="deleteTodo(todo.id)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -49,8 +52,16 @@
             />
           </svg>
         </div>
-        <div class="next-icon mx-4 hover:fill-[#6aff00] cursor-pointer" 
-        @click="sendToNextComponent(todo), deleteTodo(index)">
+  
+         <div v-else
+          class="save-icon mx-4 hover:fill-white cursor-pointer"
+          @click="editTodo(todo) ,saveTodo(todo.id)"
+        >
+         Cancel
+        </div>
+
+        <div v-if="currentEditItem !== todo.id" class="next-icon mx-4 hover:fill-[#6aff00] cursor-pointer" 
+        @click="sendToNextComponent(todo), deleteTodo(todo.id)">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -73,18 +84,30 @@ import { ref } from "vue";
 const props = defineProps(["submittedTodo" , "currentEditItem"]);
 
 const emit = defineEmits();
+// const editTodoText = ref('')
 const editTodoText = ref('')
 
-const editTodo = (index) => {
-  editTodoText.value = props.submittedTodo[index];
-  emit("editTodo", index);
-};
-const saveTodo = (index ) => {
-  emit("saveTodo", index , editTodoText.value);
+const editTodo = (todo) => {
+  editTodoText.value = todo.todo
+  emit("editTodo", todo.id);
 };
 
-const deleteTodo = (index) => {
-  emit("deleteTodo", index);
+const saveTodo = (id) => {
+    emit("saveTodo", id, editTodoText.value);
+};
+
+
+
+// const deleteTodo = (index) => {
+//   emit("deleteTodo", index);
+// };
+
+const deleteTodo = (id) => {
+  const index = props.submittedTodo.findIndex((todo) => todo.id === id);
+  if (index !== -1) {
+    props.submittedTodo.splice(index, 1);
+    emit("deleteTodo", id);
+  }
 };
 
 // const submit = () => {

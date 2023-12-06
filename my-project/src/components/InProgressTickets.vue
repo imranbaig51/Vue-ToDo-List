@@ -8,7 +8,7 @@
       :key="index"
       class="bg-[#008cff] text-[20px] font-medium p-3 px-6 my-6 rounded-full flex items-center justify-between"
     >
-    {{todo}}
+    {{todo.todo}}
       <div class="icons flex">
         <div class="prev-icon mx-4 hover:fill-[#ff0000] cursor-pointer"
         @click="sendToPreviosComponent(todo),deleteTodo(index)">
